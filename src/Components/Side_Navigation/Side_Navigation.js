@@ -9,7 +9,7 @@ const Side_Navigation = () => {
           Home
         </NavLink>
         <NavLink as="li" className="list-group-item" to="/show-foods">
-          Show All Food
+          Foods
         </NavLink>
         <NavLink as="li" className="list-group-item" to="/show-students">
           Show All Students
