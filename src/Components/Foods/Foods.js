@@ -28,11 +28,12 @@ const Foods = () => {
     setIsLoading(true);
     axios
       .get(
-        `https://aqueous-reef-45630.herokuapp.com/foods?page=${curPage}&&size=${size}`,
+        `http://localhost:5001/foods?page=${curPage}&&size=${size}`,
       )
       .then((res) => {
-        setAllFoods(res.data.result);
-        setPageCount(Math.ceil(res.data.count / size));
+        console.log(res.data)
+        setAllFoods(res.data);
+        setPageCount(Math.ceil(res.data.length / size));
         setIsLoading(false);
       })
       .catch((err) => {

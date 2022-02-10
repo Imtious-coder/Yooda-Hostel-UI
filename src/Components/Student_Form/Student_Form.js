@@ -19,7 +19,7 @@ const Student_Form = () => {
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .post('https://aqueous-reef-45630.herokuapp.com/students', data)
+      .post('http://localhost:5001/students', data)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged === true) {
