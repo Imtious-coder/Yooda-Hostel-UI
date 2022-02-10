@@ -8,13 +8,14 @@ import Admin_Page from '../Admin_Page/Admin_Page';
 const FoodTable = (props) => {
   const { _id, foodName, foodPrice } = props.food;  return (
     <tr>
-      <td>{foodName}</td>
-      <td>{foodPrice}</td>
+      <td className='text-center'>{foodName}</td>
+      <td className='text-center'>{foodPrice}</td>
+      {/* Edit & Delete button... */}
       <td>
-        <Link to={`/edit-food`}>
+        <Link to={`/edit-foods/${_id}`}>
           <button
             type="button"
-            className="btn btn-outline-primary btn-sm me-2 my-1"
+            className="btn btn-outline-primary py-0 px-4 mx-2"
           >
             Edit
           </button>
@@ -22,7 +23,7 @@ const FoodTable = (props) => {
         <button
           onClick={() => props.handleDelete(_id)}
           type="button"
-          className="btn btn-outline-danger btn-sm my-1"
+          className="btn btn-outline-danger py-0 px-4 mx-21"
         >
           Delete
         </button>
@@ -60,6 +61,7 @@ const Foods = () => {
       });
   }, [curPage, deleteStatus]);
 
+  // Food delete functionality...
   const handleDelete = (id) => {
     setIsLoading(true);
     axios
@@ -79,7 +81,7 @@ const Foods = () => {
   };
 
   return (
-    <Admin_Page pageTitle={'Show all Foods'}>
+    <Admin_Page pageTitle={'Foods Lists'}>
         {
             isLoading && 
             // Loader...
@@ -111,7 +113,8 @@ const Foods = () => {
               ))}
             </tbody>
           </Table>
-
+          
+        {/* Paginations... */}
           <ul className="pagination pagination-md">
             {[...Array(pageCount).keys()].map((number) => (
               <li

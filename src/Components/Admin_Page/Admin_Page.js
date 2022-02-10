@@ -8,10 +8,12 @@ const PageLayout = ({ children, pageTitle = 'Page Title' }) => {
       <Header />
       <div className="container my-4">
         <div className="row">
+          {/* Sidenavigation... */}
           <Side_Navigation />
-          <div className="col-md-9 my-2">
+          <div className="col-md-8 my-2">
+            {/* Cards... */}
             <Card>
-              <Card.Header as="h5">{pageTitle}</Card.Header>
+              <Card.Header className='text-center py-3 fw-bold text-uppercase text-success' as="h5">{pageTitle}</Card.Header>
               <Card.Body>{children}</Card.Body>
             </Card>
           </div>

@@ -1,19 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="py-3 border-bottom bg-light ">
-      <div className="container d-flex justify-content-between align-items-center">
-        <Link className="h5 text-dark text-decoration-none" to="/">
-          Yooda<strong className="text-success"> Hostel</strong>
-        </Link>
-        <div className="d-flex align-items-center">
-          <span>Admin</span>
-          <button className="btn btn-sm ms-2 btn-outline-dark">Logout</button>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-md">
+        <p class="navbar-brand" className='fw-bold fs-4 m-auto py-2 text-success'><span className='text-primary'>YOO</span>DA <span className='text-primary'>HOS</span>TEL</p>
       </div>
-    </div>
+    </nav>
   );
 };
 

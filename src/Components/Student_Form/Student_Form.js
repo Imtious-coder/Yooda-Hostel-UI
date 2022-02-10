@@ -40,16 +40,15 @@ const Student_Form = () => {
   return (
     <Admin_Page pageTitle={'Add Student'}>
       {!!isSuccess && (
-        <Alert variant="success">Student Added Successfully!</Alert>
+        <Alert variant="success">Great! Successfully Added Student . . . </Alert>
       )}
       <Form onSubmit={handleSubmit(onSubmit)}>
-        {/* Name */}
-        <Form.Group className="mb-3" controlId="studentName">
-          <Form.Label>Student Name</Form.Label>
+        <Form.Group className="mb-4" controlId="studentName">
+          <Form.Label className='fw-bold'>Name:</Form.Label>
           <Form.Control
             type="text"
             {...register('fullName', { required: true })}
-            placeholder="Enter student name"
+            placeholder="Full name"
             required
           />
           <Form.Control.Feedback type="invalid">
@@ -57,59 +56,59 @@ const Student_Form = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
-        {/* Roll */}
         <Form.Group className="mb-3" controlId="studentRoll">
-          <Form.Label>Roll</Form.Label>
+          <Form.Label className='fw-bold'>Roll:</Form.Label>
           <Form.Control
             type="number"
             {...register('roll', { required: true })}
-            placeholder="Enter student roll"
+            placeholder="Enter Roll number"
             required
           />
           <Form.Control.Feedback type="invalid">
             {errors.roll && <span>This field is required</span>}
           </Form.Control.Feedback>
         </Form.Group>
-        {/* Age */}
+
         <Form.Group className="mb-3" controlId="studentAge">
-          <Form.Label>Age</Form.Label>
+          <Form.Label className='fw-bold'>Age:</Form.Label>
           <Form.Control
             type="number"
             {...register('age', { required: true })}
-            placeholder="Enter student age"
+            placeholder="How old is the student"
             required
           />
           <Form.Control.Feedback type="invalid">
             {errors.age && <span>This field is required</span>}
           </Form.Control.Feedback>
         </Form.Group>
-        {/* Class */}
+
         <Form.Group className="mb-3" controlId="studentClass">
-          <Form.Label>Class</Form.Label>
+          <Form.Label className='fw-bold'>Class:</Form.Label>
           <Form.Control
             type="number"
             {...register('stclass', { required: true })}
-            placeholder="Enter student class"
+            placeholder="Please type your class"
             required
           />
           <Form.Control.Feedback type="invalid">
             {errors.stclass && <span>This field is required</span>}
           </Form.Control.Feedback>
         </Form.Group>
-        {/* Hall */}
+
         <Form.Group className="mb-3" controlId="studentHall">
-          <Form.Label>Hall</Form.Label>
+          <Form.Label className='fw-bold'>Hall:</Form.Label>
           <Form.Control
             type="text"
             {...register('hall', { required: true })}
-            placeholder="Enter student hall"
+            placeholder="Hall name here"
             required
           />
           <Form.Control.Feedback type="invalid">
             {errors.hall && <span>This field is required</span>}
           </Form.Control.Feedback>
         </Form.Group>
-        {/* Status */}
+
+        {/* Status... */}
         <Form.Group className="mb-3" controlId="studentStatus">
           <Form.Check
             type="radio"
@@ -130,13 +129,14 @@ const Student_Form = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
+        {/* Buttons... */}
         {isLoading ? (
-          <Button variant="outline-primary" type="submit" disabled>
-            Add Students
+          <Button className='px-5 py-2 fw-bold rounded-pill d-block m-auto' variant="outline-success" type="submit" disabled>
+            Add Student
           </Button>
         ) : (
-          <Button variant="outline-primary" type="submit">
-            Add Students
+          <Button className='px-5 py-2 fw-bold rounded-pill d-block m-auto' variant="outline-success" type="submit">
+            Add Student
           </Button>
         )}
       </Form>

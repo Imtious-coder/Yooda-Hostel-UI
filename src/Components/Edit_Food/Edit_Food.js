@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import Admin_Page from '../Admin_Page/Admin_Page';
 
-const Food_Form = () => {
+const Edit_Food = () => {
   const {
     register,
     handleSubmit,
@@ -12,14 +13,31 @@ const Food_Form = () => {
     reset,
   } = useForm();
 
+  const { id } = useParams();
+  
+  const [food, setFood] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
 
-  // Submit action...
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`http://localhost:5001/foods/${id}`)
+      .then((res) => {
+        setFood(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [id]);
+
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .post('http://localhost:5001/foods', data)
+      .put(`http://localhost:5001/foods/${id}`, data)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged === true) {
@@ -38,16 +56,17 @@ const Food_Form = () => {
   };
 
   return (
-    <Admin_Page pageTitle={'Add Food'}>
-      {/* Success message... */}
-      {!!isSuccess && <Alert variant="success">Great! Successfully Added Your Food . . .</Alert>}
-      {/* Form... */}
+    <Admin_Page pageTitle={'Change Food Details'}>
+      {!!isSuccess && (
+        <Alert variant="success">Food Updated Successfully!</Alert>
+      )}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-4" controlId="foodName">
-          <Form.Label className='fw-bold'>Food Name:</Form.Label>
+          <Form.Label className='fw-bold'>Food Name</Form.Label>
           <Form.Control
             type="text"
             {...register('foodName', { required: true })}
+            defaultValue={food?.foodName}
             placeholder="What's your favourite food!"
             required
           />
@@ -61,6 +80,7 @@ const Food_Form = () => {
           <Form.Control
             type="text"
             {...register('foodPrice', { required: true })}
+            defaultValue={food?.foodPrice}
             placeholder="Price here..."
             required
           />
@@ -70,11 +90,11 @@ const Food_Form = () => {
         </Form.Group>
         {isLoading ? (
           <Button className='px-5 py-2 fw-bold rounded-pill' variant="outline-success" type="submit" disabled>
-            Add Food
+            Update Item
           </Button>
         ) : (
           <Button className='px-5 py-2 fw-bold rounded-pill' variant="outline-success" type="submit">
-            Add Food
+            Update Item
           </Button>
         )}
       </Form>
@@ -82,4 +102,4 @@ const Food_Form = () => {
   );
 };
 
-export default Food_Form;
+export default Edit_Food;

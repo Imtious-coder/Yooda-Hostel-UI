@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Alert, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Admin_Page from '../Admin_Page/Admin_Page';
 
@@ -18,22 +18,22 @@ const StudentTable = (props) => {
         />
       </td>
       <td>{fullName}</td>
-      <td>{stclass}</td>
       <td>{roll}</td>
       <td>{age}</td>
+      <td>{stclass}</td>
       <td>{hall}</td>
       <td>
         {status === 'active' ? (
-          <span className="badge bg-success">Active</span>
+          <span className="badge text-success">ACTIVE</span>
         ) : (
-          <span className="badge bg-danger me-2">In active</span>
+          <span className="badge bg-danger me-2">IN ACTIVE</span>
         )}
       </td>
       <td>
         <Link to={`/show-students/${_id}`}>
           <button
             type="button"
-            className="btn btn-outline-primary btn-sm me-2 my-1"
+            className="btn btn-outline-primary py-0 px-3 mx-2"
           >
             Edit
           </button>
@@ -41,7 +41,7 @@ const StudentTable = (props) => {
         <button
           onClick={() => props.handleSingleDelete(_id)}
           type="button"
-          className="btn btn-outline-danger btn-sm my-1"
+          className="btn btn-outline-danger py-0 px-3 mx-2"
         >
           Delete
         </button>
@@ -165,6 +165,7 @@ const Students = () => {
 
   return (
     <Admin_Page pageTitle={'Show all students'}>
+      {/* Loader... */}
       {
             isLoading && 
             // Loader...
@@ -176,33 +177,15 @@ const Students = () => {
         }
       {allStudents.length > 0 ? (
         <>
-          <button
-            type="button"
-            onClick={handleMultpleDelete}
-            className={`btn btn-danger my-2 me-1 ${
-              checkedStudents.length <= 0 && 'disabled'
-            }`}
-          >
-            Delete Selected
-          </button>
-          <button
-            type="button"
-            onClick={handleStatus}
-            className={`btn btn-warning my-2 ms-1 ${
-              checkedStudents.length <= 0 && 'disabled'
-            }`}
-          >
-            Change Status
-          </button>
-
+        {/* Table... */}
           <Table striped bordered hover>
             <thead>
               <tr className="text-center">
-                <th>#</th>
+                <th></th>
                 <th>Name</th>
-                <th>Class</th>
                 <th>Roll</th>
                 <th>Age</th>
+                <th>Class</th>
                 <th>Hall</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -221,6 +204,7 @@ const Students = () => {
             </tbody>
           </Table>
 
+        {/* Paginations... */}
           <ul className="pagination pagination-md">
             {[...Array(pageCount).keys()].map((number) => (
               <li
@@ -234,10 +218,27 @@ const Students = () => {
               </li>
             ))}
           </ul>
+          {/* Buttons for bulk students... */}
+          <button
+            type="button"
+            onClick={handleStatus}
+            className={`btn btn-success py-2 px-3 rounded-pill my-3 ${
+              checkedStudents.length <= 0 && 'disabled'
+            }`}
+          >
+            Change Status
+          </button>
+          <button
+            type="button"
+            onClick={handleMultpleDelete}
+            className={`btn btn-danger py-2 px-3 rounded-pill my-3 mx-2 ${
+              checkedStudents.length <= 0 && 'disabled'
+            }`}
+          >
+            Delete Selected
+          </button>
         </>
-      ) : (
-        <Alert variant="secondary">There is no item to show!</Alert>
-      )}
+      ) : " "}
     </Admin_Page>
   );
 };

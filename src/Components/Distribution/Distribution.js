@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Alert, Form, Table } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Admin_Page from '../Admin_Page/Admin_Page';
@@ -9,7 +9,6 @@ const Distribution = () => {
   const [filterStudent, setFilterStudent] = useState(null);
   const [students, setStudents] = useState([]);
 
-  // loading and success state
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState(null);
 
@@ -82,7 +81,7 @@ const Distribution = () => {
   const { register, handleSubmit, reset } = useForm();
 
   return (
-    <Admin_Page pageTitle={'Serve Food'}>
+    <Admin_Page pageTitle={'Food Distributions'}>
       {
             isLoading && 
             // Loader...
@@ -143,7 +142,7 @@ const Distribution = () => {
               <td>{filterStudent?.date}</td>
               <td>
                 {!!filterStudent?.status ? (
-                  <span className="badge bg-success me-2">Already served!</span>
+                  <span className="badge text-success me-2">Already Served!</span>
                 ) : (
                   <span className="badge bg-danger me-2">Not Served</span>
                 )}
@@ -173,11 +172,7 @@ const Distribution = () => {
             </tr>
           </tbody>
         </Table>
-      ) : (
-        <Alert className="my-3" variant="secondary">
-          Nothing to show!
-        </Alert>
-      )}
+      ) : " "}
     </Admin_Page>
   );
 };
