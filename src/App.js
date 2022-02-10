@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Distribution from './Components/Distribution/Distribution';
 import Edit_Student from './Components/Edit_Student/Edit_Student';
 import Foods from './Components/Foods/Foods';
 import Food_Form from './Components/Food_Form/Food_Form';
@@ -18,7 +19,7 @@ function App() {
         <Route path="/add-students" element={<Student_Form />} />
         <Route path="/show-students" element={<Students />} />
         <Route path="/show-students/:id" element={<Edit_Student />} />
-        {/* <Route path="/distribution-food" element={<DistributeFood />} /> */}
+        <Route path="/distribution-food" element={<Distribution />} />
         <Route path="/serve-students/:id/:shift" element={<Serve_Form />} />
       </Routes>
     </BrowserRouter>
