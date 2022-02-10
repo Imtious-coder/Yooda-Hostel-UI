@@ -22,7 +22,7 @@ const Edit_Food = () => {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`http://localhost:5001/foods/${id}`)
+      .get(`https://protected-castle-71547.herokuapp.com/foods/${id}`)
       .then((res) => {
         setFood(res.data);
       })
@@ -37,7 +37,7 @@ const Edit_Food = () => {
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .put(`http://localhost:5001/foods/${id}`, data)
+      .put(`https://protected-castle-71547.herokuapp.com/foods/${id}`, data)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged === true) {

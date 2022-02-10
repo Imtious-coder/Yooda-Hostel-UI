@@ -74,7 +74,7 @@ const Students = () => {
     setIsLoading(true);
     axios
       .get(
-        `http://localhost:5001/students?page=${curPage}&&size=${size}`,
+        `https://protected-castle-71547.herokuapp.com/students?page=${curPage}&&size=${size}`,
       )
       .then((res) => {
         setAllStudents(res.data.result);
@@ -106,7 +106,7 @@ const Students = () => {
   const handleMultpleDelete = () => {
     setIsLoading(true);
     axios
-      .post('http://localhost:5001/multi', checkedIds)
+      .post('https://protected-castle-71547.herokuapp.com/multi', checkedIds)
       .then((res) => {
         if (res.status === 200) {
           setDeleteStatus(!deleteStatus);
@@ -127,7 +127,7 @@ const Students = () => {
   const handleSingleDelete = (id) => {
     setIsLoading(true);
     axios
-      .delete(`http://localhost:5001/students/${id}`)
+      .delete(`https://protected-castle-71547.herokuapp.com/students/${id}`)
       .then((res) => {
         if (res.data.deletedCount === 1) {
           setDeleteStatus(!deleteStatus);
@@ -145,7 +145,7 @@ const Students = () => {
   const handleStatus = () => {
     console.log('Checked Students:', checkedStudents);
     axios
-      .post('http://localhost:5001/status', checkedStudents)
+      .post('https://protected-castle-71547.herokuapp.com/status', checkedStudents)
       .then((res) => {
         if (res.status === 200) {
           setDeleteStatus(!deleteStatus);

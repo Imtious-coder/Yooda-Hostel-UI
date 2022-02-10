@@ -43,7 +43,7 @@ const Distribution = () => {
       id: filterId._id,
     };
     axios
-      .post('http://localhost:5001/distribution', data)
+      .post('https://protected-castle-71547.herokuapp.com/distribution', data)
       .then((res) => {
         if (res.data) {
           let resStuId = res.data.studentId;

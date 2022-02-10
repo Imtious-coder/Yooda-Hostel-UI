@@ -19,7 +19,7 @@ const Food_Form = () => {
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .post('http://localhost:5001/foods', data)
+      .post('https://protected-castle-71547.herokuapp.com/foods', data)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged === true) {

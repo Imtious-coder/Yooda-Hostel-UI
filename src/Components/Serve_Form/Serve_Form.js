@@ -30,7 +30,7 @@ const Serve_Form = () => {
     };
     setIsLoading(true);
     axios
-      .post(`http://localhost:5001/distribution-food`, data)
+      .post(`https://protected-castle-71547.herokuapp.com/distribution-food`, data)
       .then((res) => {
         if (res.data.acknowledged === true) {
           setIsLoading(false);

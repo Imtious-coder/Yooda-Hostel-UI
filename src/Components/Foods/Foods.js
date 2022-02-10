@@ -46,7 +46,7 @@ const Foods = () => {
     setIsLoading(true);
     axios
       .get(
-        `http://localhost:5001/foods?page=${curPage}&&size=${size}`,
+        `https://protected-castle-71547.herokuapp.com/foods?page=${curPage}&&size=${size}`,
       )
       .then((res) => {
         setAllFoods(res.data.result);
@@ -65,7 +65,7 @@ const Foods = () => {
   const handleDelete = (id) => {
     setIsLoading(true);
     axios
-      .delete(`http://localhost:5001/food/${id}`)
+      .delete(`https://protected-castle-71547.herokuapp.com/food/${id}`)
       .then((res) => {
         if (res.data.deletedCount === 1) {
           setDeleteStatus(!deleteStatus);
