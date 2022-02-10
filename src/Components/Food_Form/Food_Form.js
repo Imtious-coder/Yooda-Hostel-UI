@@ -19,7 +19,7 @@ const Food_Form = () => {
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .post('https://aqueous-reef-45630.herokuapp.com/foods', data)
+      .post('http://localhost:5001/foods', data)
       .then((res) => {
         console.log(res);
         if (res.data.acknowledged === true) {
