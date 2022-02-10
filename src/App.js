@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './Components/Home/Home';
 // import DistributeFood from './pages/DistributeFood';
 // import EditStudent from './pages/EditStudent';
 // import FoodForm from './pages/FoodForm';
-import Home from './pages/Home';
 // import ServeForm from './pages/ServeForm';
 // import ShowFoods from './pages/ShowFoods';
 // import ShowStudents from './pages/ShowStudents';
