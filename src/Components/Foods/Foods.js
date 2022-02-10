@@ -31,9 +31,8 @@ const Foods = () => {
         `http://localhost:5001/foods?page=${curPage}&&size=${size}`,
       )
       .then((res) => {
-        console.log(res.data)
-        setAllFoods(res.data);
-        setPageCount(Math.ceil(res.data.length / size));
+        setAllFoods(res.data.result);
+        setPageCount(Math.ceil(res.data.count / size));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -50,10 +49,10 @@ const Foods = () => {
             isLoading && 
             // Loader...
             <div class="d-flex justify-content-center py-3">
-                            <div class="spinner-grow text-info" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
+              <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
         }
       {allFoods.length > 0 ? (
         <>
