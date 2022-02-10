@@ -1,24 +1,28 @@
-import './App.css';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import DistributeFood from './pages/DistributeFood';
+// import EditStudent from './pages/EditStudent';
+// import FoodForm from './pages/FoodForm';
+import Home from './pages/Home';
+// import ServeForm from './pages/ServeForm';
+// import ShowFoods from './pages/ShowFoods';
+// import ShowStudents from './pages/ShowStudents';
+// import StudentForm from './pages/StudentForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/add-food" element={<FoodForm />} />
+        <Route path="/show-foods" element={<ShowFoods />} />
+        <Route path="/add-students" element={<StudentForm />} />
+        <Route path="/show-students" element={<ShowStudents />} />
+        <Route path="/show-students/:id" element={<EditStudent />} />
+        <Route path="/distribution-food" element={<DistributeFood />} />
+        <Route path="/serve-students/:id/:shift" element={<ServeForm />} /> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
